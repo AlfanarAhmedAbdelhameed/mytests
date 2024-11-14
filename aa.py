@@ -78,7 +78,7 @@ class Pipeline:
             return "Wikipedia Pipeline"
         else:
             
-            
+            test_streaming()
             response = requests.post(self.API_URL, json={    "question": "Hey, how are you?",})
             return response.text
             #return self.API_URL
