@@ -40,6 +40,10 @@ class Pipeline:
             print("Title Generation")
             return "Wikipedia Pipeline"
         else:
+
+             response = requests.post("https://flow.alfanar.ai/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd", json={    "question": "Hey, how are you?",})
+            return response.json()
+            
             titles = []
             for query in [user_message]:
                 query = query.replace(" ", "_")
