@@ -77,7 +77,7 @@ class Pipeline:
             print("Streaming response:")
             for chunk in completion:
                 # {event: "token", data: "hello"}
-                yield chunk
+                yield str(chunk)
 
 
             
