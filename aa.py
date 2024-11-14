@@ -1,6 +1,7 @@
 from typing import List, Union, Generator, Iterator
 from pydantic import BaseModel
 from schemas import OpenAIChatMessage
+from flowise import Flowise, PredictionData
 import requests
 import os
 
@@ -30,6 +31,25 @@ class Pipeline:
     def query(payload):
         response = requests.post(self.API_URL, json=payload)
         return response.json()
+
+    def test_streaming():
+        client = Flowise()
+
+        # Test streaming prediction
+        completion = client.create_prediction(
+            PredictionData(
+                chatflowId="<chatflow-id>",
+                question="Tell me a joke!",
+                streaming=True
+            )
+        )
+
+        # Process and print each streamed chunk
+        print("Streaming response:")
+        for chunk in completion:
+            # {event: "token", data: "hello"}
+            print(chunk)
+
     
     async def on_shutdown(self):
         # This function is called when the server is stopped.
