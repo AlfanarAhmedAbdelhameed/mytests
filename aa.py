@@ -48,8 +48,8 @@ class Pipeline:
         else:
             
             
-            return requests.post(self.API_URL, json={    "question": "Hey, how are you?",}).text
-            #return output
+            response = requests.post(self.API_URL, json={    "question": "Hey, how are you?",}).text
+            return response.text
             #return self.API_URL
 
             
