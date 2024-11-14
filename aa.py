@@ -1,3 +1,14 @@
+"""
+title: Llama sdsds 
+author: open-webui
+date: 2024-05-30
+version: 1.0
+license: MIT
+description: A pipeline for retrieving relevant information from a knowledge base using the Llama Index library with Ollama embeddings.
+requirements: flowise
+"""
+
+
 from typing import List, Union, Generator, Iterator
 from pydantic import BaseModel
 from schemas import OpenAIChatMessage
