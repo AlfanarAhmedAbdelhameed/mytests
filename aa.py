@@ -77,9 +77,10 @@ class Pipeline:
             print("Streaming response:")
             for chunk in completion:
                 # {event: "token", data: "hello"}
-                yield str(chunk)
-
-
+                parsed_chunk = json.loads(chunk)
+                if (parsed_chunk['event'] == 'token' and parsed_chunk['data'] != ''):
+                    yield str(parsed_chunk['data'])
+            
             
             response = requests.post(self.API_URL, json={    "question": "Hey, how are you?",})
             return response.text
