@@ -70,6 +70,7 @@ class Pipeline:
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question= user_message,
+                    chatId="ss",
                     streaming=True
                 )
             )
