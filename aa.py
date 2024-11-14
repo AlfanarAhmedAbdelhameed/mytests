@@ -69,7 +69,7 @@ class Pipeline:
             completion = client.create_prediction(
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
-                    question="Tell me a joke!",
+                    question= user_message,
                     streaming=True
                 )
             )
