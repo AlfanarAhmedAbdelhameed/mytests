@@ -40,8 +40,8 @@ class Pipeline:
             print("Title Generation")
             return "Wikipedia Pipeline"
         else:
-
-             response = requests.post("http://flowise/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd", json={    "question": "Hey, how are you?",})
+            sss={"question": "Hey, how are you?"}
+             response = requests.post("http://flowise/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd", json=sss)
             return response.json()
             
             titles = []
