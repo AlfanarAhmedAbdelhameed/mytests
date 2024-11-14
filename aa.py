@@ -4,7 +4,6 @@ from schemas import OpenAIChatMessage
 import requests
 import os
 
-API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
 
 class Pipeline:
     class Valves(BaseModel):
@@ -17,6 +16,8 @@ class Pipeline:
         # The identifier must be an alphanumeric string that can include underscores or hyphens. It cannot contain spaces, special characters, slashes, or backslashes.
         # self.id = "wiki_pipeline"
         self.name = "Wikipedia Pipeline"
+
+        self.API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
 
         # Initialize rate limits
         self.valves = self.Valves(**{"OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "")})
@@ -49,7 +50,7 @@ class Pipeline:
             
             #output = query({    "question": "Hey, how are you?",})
             #return output
-            return API_URL
+            return self.API_URL
 
             
             titles = []
