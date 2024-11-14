@@ -30,7 +30,7 @@ class Pipeline:
         # self.id = "wiki_pipeline"
         self.name = "Wikipedia Pipeline"
 
-        self.API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
+        #self.API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
 
         # Initialize rate limits
         self.valves = self.Valves(**{"OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "")})
@@ -40,9 +40,6 @@ class Pipeline:
         print(f"on_startup:{__name__}")
         pass
 
-    def query(payload):
-        response = requests.post(self.API_URL, json=payload)
-        return response.json()
 
 
     
