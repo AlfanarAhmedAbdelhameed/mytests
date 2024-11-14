@@ -28,7 +28,7 @@ class Pipeline:
         pass
 
     def query(payload):
-        response = requests.post(API_URL, json=payload)
+        response = requests.post(self.API_URL, json=payload)
         return response.json()
     
     async def on_shutdown(self):
@@ -48,9 +48,9 @@ class Pipeline:
         else:
             
             
-            #output = query({    "question": "Hey, how are you?",})
-            #return output
-            return self.API_URL
+            output = query({    "question": "Hey, how are you?",})
+            return output
+            #return self.API_URL
 
             
             titles = []
