@@ -45,10 +45,10 @@ class Pipeline:
             return "Wikipedia Pipeline"
         else:
             
-            #API_URL = "https://flow.alfanar.ai/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
-            #output = query({    "question": "Hey, how are you?",})
-            #return output
-            return "hellooo"
+            API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
+            output = query({    "question": "Hey, how are you?",})
+            return output
+            #return "hellooo"
 
             
             titles = []
