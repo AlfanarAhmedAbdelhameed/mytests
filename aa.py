@@ -49,7 +49,7 @@ class Pipeline:
             
             #output = query({    "question": "Hey, how are you?",})
             #return output
-            return "hellooo"
+            return API_URL
 
             
             titles = []
