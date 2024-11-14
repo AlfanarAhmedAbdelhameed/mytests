@@ -78,7 +78,26 @@ class Pipeline:
             return "Wikipedia Pipeline"
         else:
             
-            test_streaming()
+            #test_streaming()
+            client = Flowise(base_url="http://flowise:3000")
+
+            # Test streaming prediction
+            completion = client.create_prediction(
+                PredictionData(
+                    chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
+                    question="Tell me a joke!",
+                    streaming=True
+                )
+            )
+
+            # Process and print each streamed chunk
+            print("Streaming response:")
+            for chunk in completion:
+                # {event: "token", data: "hello"}
+                print(chunk)
+
+
+            
             response = requests.post(self.API_URL, json={    "question": "Hey, how are you?",})
             return response.text
             #return self.API_URL
