@@ -48,8 +48,8 @@ class Pipeline:
         else:
             
             
-            output = query({    "question": "Hey, how are you?",})
-            return output
+            return query({    "question": "Hey, how are you?",})
+            #return output
             #return self.API_URL
 
             
