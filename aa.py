@@ -62,8 +62,28 @@ class Pipeline:
             return "Wikipedia Pipeline"
         else:
 
-            return "Wikipedia Pipeline2222222222222"
-           
-            
+            #return "Wikipedia Pipeline2222222222222"
+            #return body["user"]["email"]
+            #test_streaming()
+            client = Flowise(base_url="http://flowise:3000")
+
+            # Test streaming prediction
+            completion = client.create_prediction(
+                PredictionData(
+                    chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
+                    question= user_message,
+                    chatId="ss",
+                    streaming=True
+                )
+            )
+
+            # Process and print each streamed chunk
+            print("Streaming response:")
+            for chunk in completion:
+                # {event: "token", data: "hello"}
+                parsed_chunk = json.loads(chunk)
+                if (parsed_chunk['event'] == 'token' and parsed_chunk['data'] != ''):
+                    yield str(parsed_chunk['data'])
+                        
             
         
