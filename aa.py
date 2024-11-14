@@ -85,35 +85,4 @@ class Pipeline:
                     yield str(parsed_chunk['data'])
             
             
-            response = requests.post(self.API_URL, json={    "question": "Hey, how are you?",})
-            return response.text
-            #return self.API_URL
-
-            
-            titles = []
-            for query in [user_message]:
-                query = query.replace(" ", "_")
-
-                r = requests.get(
-                    f"https://en.wikipedia.org/w/api.php?action=opensearch&search={query}&limit=1&namespace=0&format=json"
-                )
-
-                response = r.json()
-                titles = titles + response[1]
-                print(titles)
-
-            context = None
-            if len(titles) > 0:
-                r = requests.get(
-                    f"https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles={'|'.join(titles)}"
-                )
-                response = r.json()
-                # get extracts
-                pages = response["query"]["pages"]
-                for page in pages:
-                    if context == None:
-                        context = pages[page]["extract"] + "\n"
-                    else:
-                        context = context + pages[page]["extract"] + "\n"
-
-            return context if context else "No information founddddddddddddddd"
+        
