@@ -25,6 +25,10 @@ class Pipeline:
         print(f"on_startup:{__name__}")
         pass
 
+    def query(payload):
+        response = requests.post(API_URL, json=payload)
+        return response.json()
+    
     async def on_shutdown(self):
         # This function is called when the server is stopped.
         print(f"on_shutdown:{__name__}")
@@ -41,7 +45,10 @@ class Pipeline:
             return "Wikipedia Pipeline"
         else:
             
-           
+            API_URL = "https://flow.alfanar.ai/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
+            output = query({    "question": "Hey, how are you?",})
+            return output
+
             titles = []
             for query in [user_message]:
                 query = query.replace(" ", "_")
