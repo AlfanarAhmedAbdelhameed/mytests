@@ -44,12 +44,12 @@ class Pipeline:
         return response.json()
 
     def test_streaming():
-        client = Flowise()
+        client = Flowise(base_url="http://flowise:3000")
 
         # Test streaming prediction
         completion = client.create_prediction(
             PredictionData(
-                chatflowId="<chatflow-id>",
+                chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                 question="Tell me a joke!",
                 streaming=True
             )
