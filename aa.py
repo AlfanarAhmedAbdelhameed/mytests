@@ -61,7 +61,8 @@ class Pipeline:
             print("Title Generation")
             return "Wikipedia Pipeline"
         else:
-            
+
+            return body["user"]["email"]
             #test_streaming()
             client = Flowise(base_url="http://flowise:3000")
 
