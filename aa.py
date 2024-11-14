@@ -45,10 +45,12 @@ class Pipeline:
             return "Wikipedia Pipeline"
         else:
             
-            API_URL = "https://flow.alfanar.ai/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
-            output = query({    "question": "Hey, how are you?",})
-            return output
+            #API_URL = "https://flow.alfanar.ai/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
+            #output = query({    "question": "Hey, how are you?",})
+            #return output
+            return "hellooo"
 
+            
             titles = []
             for query in [user_message]:
                 query = query.replace(" ", "_")
