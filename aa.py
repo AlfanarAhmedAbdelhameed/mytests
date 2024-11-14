@@ -65,6 +65,7 @@ class Pipeline:
             #return "Wikipedia Pipeline2222222222222"
             print(body["user"]["email"])
             print(body)
+            print(messages)
             #test_streaming()
             client = Flowise(base_url="http://flowise:3000")
 
