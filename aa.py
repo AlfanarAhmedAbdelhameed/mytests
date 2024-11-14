@@ -15,6 +15,7 @@ from schemas import OpenAIChatMessage
 from flowise import Flowise, PredictionData
 import requests
 import os
+import json
 
 
 class Pipeline:
