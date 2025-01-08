@@ -16,6 +16,10 @@ import requests
 import os
 import json
 
+class IMessage(BaseModel):  # or any base class
+    role: str
+    content: str
+
 class Pipeline:
     class Valves(BaseModel):
         pass
@@ -82,8 +86,8 @@ class Pipeline:
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question=user_message,
                     history=[
-    {"role": "apiMessage", "content": "Hello, how can I help you?"},
-    {"role": "userMessage", "content": "I need help with my account."},
+    IMessage(role="apiMessage", content="Hello, how can I help you?"),
+    IMessage(role="userMessage", content="I need help with my account."),
 ],
                     # chatId="ss",
                     streaming=True
