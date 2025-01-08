@@ -90,11 +90,12 @@ class Pipeline:
 
             # Process and print each streamed chunk
             print("Streaming response:")
+            print(str(self))
             for chunk in completion:
                 # {event: "token", data: "hello"}
                 parsed_chunk = json.loads(chunk)
                 if (parsed_chunk['event'] == 'token' and parsed_chunk['data'] != ''):
-                    print(str(parsed_chunk['data']))
+                    #print(str(parsed_chunk['data']))
                     yield str(parsed_chunk['data'])
                         
             
