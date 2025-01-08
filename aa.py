@@ -61,11 +61,18 @@ class Pipeline:
             if isinstance(message.get("content"), list):
                 for item in message["content"]:
                     if item["type"] == "text":
-                        processed_content.append({"role": "userMessage", "content": item["text"]})
+                        processed_content.append({"type": "text", "text": item["text"]})
+                    
             else:
-                processed_messages.append(
+                processed_content = [
+                    {"type": "text", "text": message.get("content", "")}
+                ]
+
+            processed_messages.append(
                 {"role": message["role"], "content": processed_content}
             )
+
+        
 
         
 
