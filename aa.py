@@ -54,6 +54,17 @@ class Pipeline:
         # This is where you can add your custom pipelines like RAG.
         print(f"pipe:{__name__}")
 
+        processed_messages = []
+
+        for message in messages:
+            processed_content = []
+            if isinstance(message.get("content"), list):
+                for item in message["content"]:
+                    if item["type"] == "text":
+                        processed_content.append({"role": "userMessage", "content": item["text"]})
+
+        
+
         if body.get("title", False):
             print("Title Generation")
             return "Wikipedia Pipeline"
@@ -71,7 +82,7 @@ class Pipeline:
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question= user_message,
-                    history= messages,
+                    #history= messages,
                     #chatId="ss",
                     streaming=True
                 )
@@ -87,4 +98,4 @@ class Pipeline:
                     yield str(parsed_chunk['data'])
                         
             
-        
+        return ""
