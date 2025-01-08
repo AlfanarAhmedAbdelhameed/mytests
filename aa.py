@@ -81,7 +81,10 @@ class Pipeline:
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question=user_message,
-                    history=processed_messages,
+                    history=[
+    {"role": "apiMessage", "content": "Hello, how can I help you?"},
+    {"role": "userMessage", "content": "I need help with my account."},
+],
                     # chatId="ss",
                     streaming=True
                 )
