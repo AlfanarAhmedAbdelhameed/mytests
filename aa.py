@@ -8,7 +8,6 @@ description: A pipeline for retrieving relevant information from a knowledge bas
 requirements: flowise
 """
 
-
 from typing import List, Union, Generator, Iterator
 from pydantic import BaseModel
 from schemas import OpenAIChatMessage
@@ -16,7 +15,6 @@ from flowise import Flowise, PredictionData
 import requests
 import os
 import json
-
 
 class Pipeline:
     class Valves(BaseModel):
@@ -30,7 +28,7 @@ class Pipeline:
         # self.id = "wiki_pipeline"
         self.name = "Wikipedia Pipeline"
 
-        #self.API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
+        # self.API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
 
         # Initialize rate limits
         self.valves = self.Valves(**{"OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "")})
@@ -40,9 +38,6 @@ class Pipeline:
         print(f"on_startup:{__name__}")
         pass
 
-
-
-    
     async def on_shutdown(self):
         # This function is called when the server is stopped.
         print(f"on_shutdown:{__name__}")
@@ -62,7 +57,6 @@ class Pipeline:
                 for item in message["content"]:
                     if item["type"] == "text":
                         processed_content.append({"type": "text", "text": item["text"]})
-                    
             else:
                 processed_content = [
                     {"type": "text", "text": message.get("content", "")}
@@ -72,29 +66,23 @@ class Pipeline:
                 {"role": message["role"], "content": processed_content}
             )
 
-        
-
-        
-
         if body.get("title", False):
             print("Title Generation")
             return "Wikipedia Pipeline"
         else:
-
-            #return "Wikipedia Pipeline2222222222222"
             print(body["user"]["email"])
             print(body)
             print(messages)
-            #test_streaming()
+
             client = Flowise(base_url="http://flowise:3000")
 
             # Test streaming prediction
             completion = client.create_prediction(
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
-                    question= user_message,
-                    history = processed_messages
-                    #chatId="ss",                    
+                    question=user_message,
+                    history=processed_messages,
+                    # chatId="ss",
                     streaming=True
                 )
             )
@@ -105,9 +93,7 @@ class Pipeline:
             for chunk in completion:
                 # {event: "token", data: "hello"}
                 parsed_chunk = json.loads(chunk)
-                if (parsed_chunk['event'] == 'token' and parsed_chunk['data'] != ''):
-                    #print(str(parsed_chunk['data']))
+                if parsed_chunk['event'] == 'token' and parsed_chunk['data'] != '':
                     yield str(parsed_chunk['data'])
-                        
-            
+
         return ""
