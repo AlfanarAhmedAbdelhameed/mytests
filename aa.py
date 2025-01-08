@@ -63,6 +63,10 @@ class Pipeline:
                     if item["type"] == "text":
                         processed_content.append({"role": "userMessage", "content": item["text"]})
 
+              processed_messages.append(
+                {"role": message["role"], "content": processed_content}
+            )
+
         
 
         if body.get("title", False):
@@ -82,7 +86,7 @@ class Pipeline:
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question= user_message,
-                    history = processed_content
+                    history = processed_messages
                     #chatId="ss",                    
                     streaming=True
                 )
