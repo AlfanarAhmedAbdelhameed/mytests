@@ -25,7 +25,7 @@ class IMessage(BaseModel):  # or any base class
 
 class Pipeline:
     class Valves(BaseModel):
-        pass
+        ANTHROPIC_API_KEY: str = Field(default="")
 
     def __init__(self):
         # Optionally, you can set the id and name of the pipeline.
