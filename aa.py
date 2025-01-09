@@ -74,6 +74,7 @@ class Pipeline:
                 #{"role": message["role"], "content": processed_content}
             )
             print("userMessage" if message["role"] == "user" else "apiMessage")
+            print(processed_content)
 
         if body.get("title", False):
             print("Title Generation")
@@ -90,11 +91,8 @@ class Pipeline:
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question=user_message,
-                    history= [
-                        SimpleNamespace(role="userMessage", content="Hello, my insurance class is VIP+"),
-        SimpleNamespace(role="apiMessage", content="Hello, how can I help you?")
-        
-    ],
+                    history= processed_messages,
+                    #[                        SimpleNamespace(role="userMessage", content="Hello, my insurance class is VIP+"),        SimpleNamespace(role="apiMessage", content="Hello, how can I help you?")            ],
                     # chatId="ss",
                     streaming=True
                 )
