@@ -25,8 +25,8 @@ class IMessage(BaseModel):  # or any base class
 
 class Pipeline:
     class Valves(BaseModel):
-        #USE_PERMISSIVE_SAFETY: bool = Field(default=False)
-        pass
+        USE_PERMISSIVE_SAFETY: bool = Field(default=False)
+        #pass
 
     def __init__(self):
         # Optionally, you can set the id and name of the pipeline.
