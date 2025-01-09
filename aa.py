@@ -12,6 +12,8 @@ from typing import List, Union, Generator, Iterator
 from pydantic import BaseModel
 from schemas import OpenAIChatMessage
 from flowise import Flowise, PredictionData
+from types import SimpleNamespace
+
 import requests
 import os
 import json
@@ -85,9 +87,9 @@ class Pipeline:
                 PredictionData(
                     chatflowId="0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd",
                     question=user_message,
-                    history=[
-        {"role": "apiMessage", "content": "Hello, how can I help you?"},
-        {"role": "userMessage", "content": "I need help with my account."},
+                    history= [
+        SimpleNamespace(role="apiMessage", content="Hello, how can I help you?"),
+        SimpleNamespace(role="userMessage", content="I need help with my account.")
     ],
                     # chatId="ss",
                     streaming=True
