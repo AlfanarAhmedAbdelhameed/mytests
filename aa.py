@@ -25,8 +25,8 @@ class IMessage(BaseModel):  # or any base class
 
 class Pipeline:
     class Valves(BaseModel):
-        USE_PERMISSIVE_SAFETY: bool = Field(default=False)
-        #pass
+        #USE_PERMISSIVE_SAFETY: bool = Field(default=False)
+        pass
 
     def __init__(self):
         # Optionally, you can set the id and name of the pipeline.
@@ -44,12 +44,12 @@ class Pipeline:
     async def on_startup(self):
         # This function is called when the server is started.
         print(f"on_startup:{__name__}")
-        #pass
+        pass
 
     async def on_shutdown(self):
         # This function is called when the server is stopped.
         print(f"on_shutdown:{__name__}")
-        #pass
+        pass
 
     def pipe(
         self, user_message: str, model_id: str, messages: List[dict], body: dict
