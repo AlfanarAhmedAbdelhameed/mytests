@@ -17,6 +17,7 @@ from types import SimpleNamespace
 import requests
 import os
 import json
+import time
 
 class IMessage(BaseModel):  # or any base class
     role: str
@@ -54,6 +55,8 @@ class Pipeline:
     ) -> Union[str, Generator, Iterator]:
         # This is where you can add your custom pipelines like RAG.
         print(f"pipe:{__name__}")
+        start = time.time()
+
 
         processed_messages = []
 
@@ -67,6 +70,8 @@ class Pipeline:
                 processed_content = message.get("content", "")
 
             print("message")
+            print("Line 1 execution time:", time.time() - start)
+
             #print(message["role"])
             #print(processed_content)
             processed_messages.append(
@@ -80,9 +85,11 @@ class Pipeline:
             print("Title Generation")
             return "Wikipedia Pipeline"
         else:
-            print(body["user"]["email"])
-            print(body)
-            print(messages)
+            #print(body["user"]["email"])
+            #print(body)
+            #print(messages)
+            print("Line 1 execution time:", time.time() - start)
+
 
             client = Flowise(base_url="http://flowise:3000")
 
@@ -99,8 +106,9 @@ class Pipeline:
             )
 
             # Process and print each streamed chunk
-            print("Streaming response:")
-            print(str(self))
+            #print("Streaming response:")
+            #print(str(self))
+            print("Line 1 execution time:", time.time() - start)
             for chunk in completion:
                 # {event: "token", data: "hello"}
                 parsed_chunk = json.loads(chunk)
