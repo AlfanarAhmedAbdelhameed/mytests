@@ -56,6 +56,7 @@ class Pipeline:
         # This is where you can add your custom pipelines like RAG.
         print(f"pipe:{__name__}")
         start = time.time()
+        print("start time:", start)
 
 
         processed_messages = []
@@ -78,8 +79,8 @@ class Pipeline:
                 SimpleNamespace(role="userMessage" if message["role"] == "user" else "apiMessage", content=processed_content)
                 #{"role": message["role"], "content": processed_content}
             )
-            print("userMessage" if message["role"] == "user" else "apiMessage")
-            print(processed_content)
+            
+            
 
         if body.get("title", False):
             print("Title Generation")
