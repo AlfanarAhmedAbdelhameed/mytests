@@ -62,17 +62,18 @@ class Pipeline:
             if isinstance(message.get("content"), list):
                 for item in message["content"]:
                     if item["type"] == "text":
-                        processed_content.append({"type": "text", "text": item["text"]})
+                        processed_content.append(item["text"])
             else:
                 processed_content = message.get("content", "")
 
             print("message")
-            print(message["role"])
-            print(processed_content)
+            #print(message["role"])
+            #print(processed_content)
             processed_messages.append(
-                SimpleNamespace(role=message["role"], content=processed_content)
+                SimpleNamespace(role="userMessage" if message["role"] == "user" else "apiMessage", content=processed_content)
                 #{"role": message["role"], "content": processed_content}
             )
+            print([processed_messages.__dict__ for msg in (data.history or [])])
 
         if body.get("title", False):
             print("Title Generation")
