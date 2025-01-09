@@ -73,7 +73,7 @@ class Pipeline:
                 SimpleNamespace(role="userMessage" if message["role"] == "user" else "apiMessage", content=processed_content)
                 #{"role": message["role"], "content": processed_content}
             )
-            print([processed_messages.__dict__ for msg in (data.history or [])])
+            print([msg.__dict__ for msg in (processed_messages or [])])
 
         if body.get("title", False):
             print("Title Generation")
