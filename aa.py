@@ -64,9 +64,7 @@ class Pipeline:
                     if item["type"] == "text":
                         processed_content.append({"type": "text", "text": item["text"]})
             else:
-                processed_content = [
-                    {"type": "text", "text": message.get("content", "")}
-                ]
+                processed_content = message.get("content", "")
 
             print("message")
             print(message["role"])
