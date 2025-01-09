@@ -68,8 +68,12 @@ class Pipeline:
                     {"type": "text", "text": message.get("content", "")}
                 ]
 
+            print("message")
+            print(message["role"])
+            print(processed_content)
             processed_messages.append(
-                {"role": message["role"], "content": processed_content}
+                SimpleNamespace(role=message["role"], content=processed_content)
+                #{"role": message["role"], "content": processed_content}
             )
 
         if body.get("title", False):
