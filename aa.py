@@ -117,4 +117,3 @@ class Pipeline:
                 if parsed_chunk['event'] == 'token' and parsed_chunk['data'] != '':
                     yield str(parsed_chunk['data'])
 
-        return ""
