@@ -25,8 +25,7 @@ class IMessage(BaseModel):  # or any base class
 
 class Pipeline:
     class Valves(BaseModel):
-        ANTHROPIC_API_KEY: str = Field(default="")
-        pass
+        USE_PERMISSIVE_SAFETY: bool = Field(default=False)
 
     def __init__(self):
         # Optionally, you can set the id and name of the pipeline.
@@ -39,7 +38,7 @@ class Pipeline:
         # self.API_URL = "http://flowise:3000/api/v1/prediction/0e4eb362-1ef8-4e14-9bd2-410ae7b14ddd"
 
         # Initialize rate limits
-        self.valves = self.Valves(**{"OPENAI_API_KEY": os.getenv("OPENAI_API_KEY", "")})
+        self.valves = self.Valves(**{"USE_PERMISSIVE_SAFETY": False})
 
     async def on_startup(self):
         # This function is called when the server is started.
